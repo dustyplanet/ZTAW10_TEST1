@@ -45,3 +45,35 @@ MODULE modify_screen OUTPUT.
   ENDLOOP.
 
 ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  GET_CONN  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE get_conn OUTPUT.
+  SELECT SINGLE * FROM spfli INTO CORRESPONDING FIELDS OF sdyn_conn
+    WHERE carrid = sdyn_conn-carrid AND connid = sdyn_conn-connid.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  GET_PLANE  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE get_plane OUTPUT.
+  SELECT SINGLE * FROM saplane WHERE planetype = sdyn_conn-planetype.
+ENDMODULE.
+*&---------------------------------------------------------------------*
+*&      Module  SET_DYNNR  OUTPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_dynnr OUTPUT.
+  CASE 'X'.
+    WHEN r1.
+      dynnr = '0110'.
+    WHEN r2.
+      dynnr = '0120'.
+    WHEN r3.
+      dynnr = '0130'.
+  ENDCASE.
+ENDMODULE.

@@ -18,15 +18,7 @@ MODULE user_command_0100 INPUT.
       ELSE.
         mod_flag = 'X'.
       ENDIF.
-    WHEN 'MODE'.
-      CASE 'X'.
-        WHEN r1.
-          dynnr = '0110'.
-        WHEN r2.
-          dynnr = '0120'.
-        WHEN r3.
-          dynnr = '0130'.
-      ENDCASE.
+
   ENDCASE.
 ENDMODULE.
 *&---------------------------------------------------------------------*
