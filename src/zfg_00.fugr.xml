@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Demo Function group for TAW10</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFG_00TOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFG_00</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZBC400_12_AUTH</FUNCNAME>
+     <SHORT_TEXT>AUTHORIZATION CHECK</SHORT_TEXT>
+    </item>
+    <item>
+     <FUNCNAME>Z_00_AUTHCHECK</FUNCNAME>
+     <SHORT_TEXT>Check Auth</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CARR_ID</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_ACTVT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ACTIV_AUTH</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_AUTH</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>INVALID_ACTVT</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Airline Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_ACTVT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Activity</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_AUTH</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Not authorized</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>INVALID_ACTVT</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Invalid activity</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_00_GET_CONNECTION</FUNCNAME>
+     <SHORT_TEXT>Get Connection Data</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CARR_ID</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_CONNID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CONN_ID</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EV_CONNECTION</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BC400_S_CONNECTION</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_DATE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Airline Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_CONNID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Flight Connection Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EV_CONNECTION</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Flight Connection</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_DATE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>No Data found</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_00_GET_FLIGHTS</FUNCNAME>
+     <SHORT_TEXT>Get Flight List</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CARR_ID</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_CONNID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CONN_ID</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EV_FLIGHTS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BC400_T_FLIGHTS</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_DATA</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Airline Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_CONNID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Flight Connection Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EV_FLIGHTS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Flight times</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_DATA</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>No Data</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_00_GET_FLIGHTS_MOD</FUNCNAME>
+     <SHORT_TEXT>Get Flight List</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CARR_ID</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_CONNID</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>S_CONN_ID</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EV_FLIGHTS</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BC400_T_FLIGHTS</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NO_DATA</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_CARRID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Airline Code</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_CONNID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Flight Connection Number</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EV_FLIGHTS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Flight times</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NO_DATA</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>No Data</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_16_GET_FLIGHTS_MOD</FUNCNAME>
+     <SHORT_TEXT>Get Flight List</SHORT_TEXT>
+    </item>
+    <item>
+     <FUNCNAME>Z_CAL_PERCENTAGE_00</FUNCNAME>
+     <SHORT_TEXT>Percentage calculation</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_ACT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BC400_ACT</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>IV_MAX</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BC400_MAX</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EV_RESULT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BC400_PERC</TYP>
+      </RSEXP>
+     </EXPORT>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>ZERO_DIVIDE</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_ACT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Current Value for Percentage Calculation</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>IV_MAX</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Maximum Value for Exponent Calculation</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EV_RESULT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Result of Percentage Calculation with Two Decimal Places</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ZERO_DIVIDE</PARAMETER>
+       <KIND>X</KIND>
+       <STEXT>Divide by zero</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
